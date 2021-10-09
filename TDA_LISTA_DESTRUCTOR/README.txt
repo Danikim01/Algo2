@@ -1,0 +1,26 @@
+
+Una lista es un TDA (tipo de dato abstracto) que se utiliza para agrupar elementos basado en nodos enlazados. La idea del mismo consiste que un nodo al poder conocer su siguiente puede crear una lista de nodos, esta lista termina cuando el ultimo nodo apunta a NULL (o a vacio). Se conoce como "nodo": Un nodo es como un bloque que contiene un elemento cualquiera (de tipo void*) y que puede conocer (o que apunta) al nodo sucesor como al nodo predecesor. En este trabajo se implemento un tipo de lista conocida como "lista simplemente enlazada", en cuyo caso cada nodo conoce exclusivamente al nodo siguiente, de forma tal que es el sentido de su recorrido es unidireccional.
+
+Se caracterizan principalmente porque cada elemento tiene un sucesor (salvo el ultimo elemento) 
+y un predecesor (salvo el primero). Sin embargo, a diferencia de los tda pila y cola es que una lista enlazada puede insertar y eliminar elementos de la posicion que se desee (siempre y cuando se de la posiblidad de hacerlo).
+
+Por lo general, existe un conjunto de operaciones no estandares que se puede realizar sobre un TDA dado que existe un conjunto chiquito de presencia obligatoria, las cuales puede variar segun las necesidades del programador. Al conjunto que siempre deberia estar se lo denominara conjunto minimo de operaciones. Para el caso de la lista son: crear, insertar,insertar en posicion,borrar,borrar de posicion,elemento en posicion,ultimo,vacia,elementos y destruir. Todas estas corresponden a funciones que fueron implementadas en este trabajo.
+
+Dicho esto, es necesario recalcar que para la resolución de este trabajo se utilizo una metodologı́a orientada a pruebas de manera que no sólamente se logre una implementación correcta de cada una de las primitivas, si no
+una experiencia de desarrollo menos turbulenta. Por dicho motivo, se incluye un archivo pruebas.c que fue completado con las pruebas pertinentes de cada una de las diferentes primitivas del TDA. 
+
+Existen distintos tipos de listas: en primer lugar se encuentran las listas de nodos simplemente enlazadas (que corresponde al tipo de lista que se implemente en este trabajo), en segundo lugar se encuentran las listas de nodos doblemente enlazadas y por ultimo lugar se encuentran las listas circulares. 
+
+Asimismo, este trabajo implementa una lista enlazada que puede adquirir el comportamiento tanto de un TDA pila como un TDA cola. Se conoce como TDA pila a una coleccion ordenada de elementos en la que pueden insertarse y eliminarse por un extremo, denominado tope. Mientras que una cola es una estructura que posee dos dos extremos por los que se realizan operaciones. Un extremo es el inicio o frente de la cola y el otro extremo es el final o rear de la cola.
+
+En otras palabras, el conjunto de operaciones minimas pertenecientes tanto al TDA pila : crear (create),poner (push),sacar (pop),tope (top),esta vacia (is empty) ,destruir (destroy) y como al TDA cola : crear (create), encolar (enqueue), desencolar (dequeue),primero (first),esta vacia (is empty),destruir (destroy). Se pudieron implementar mediante el uso de las funciones y el conjunto de operaciones implementadas para el TDA lista.
+
+La lista fue implementada con un puntero al primer nodo y otro al ultimo de nodo de modo que las funciones lista_insertar y lista_ultimo sean de complejidad O(1) y no se necesario recorrer toda la lista.
+Para la funcion lista_apilar se decidio que en lugar de apilar un elemento al final y desapilar un elemento al final, se apile al inicio de la lista y que desapile desde el primer elemento de la lista. Esto se hizo para que la complejidad de la funcion disminuya de O(N) a O(1), dado que para desapilar desde el final es necesario recorrer la lista hasta el anteultimo elemento lo cual hace que su complejidad O(n). 
+Con este simple cambio, no solo se dismiuye la complejidad computacional sino que tambien se sigue respetando las convenciones dispuestas para el TDA pila (al insertar desde el inico y eliminar tambien desde el inicio). 
+
+Pese a que no es una gran optimizacion, la gran mayoria de las funciones primitivas se apoyan en una funcion privada que yo implemente llamada "avanzar_lista" cuya funcion es recorrer la lista hasta una posicion determinada de la misma lo cual hace que su complejidad computacional sea de O(N). lista_insertar, lista_insertar_en_posicion, lista borrar y lista_borrar_en_posicion usan avanzar_lista para hacer operaciones en determinadas posiciones de la lista.
+
+En las pruebas para ver si funciona correctamente la insercion de un determinado elemento en la lista, decidi que el elemento a insertar (en la mayorìa de las pruebas) fuera un "elemento" del tipo char. Esto no necesariamente tiene porque ser asi, dado que que la funcion lista_insertar recibe un (void*), lo cual nos indica que puede recibir y agregar cualquier cosa (es decir elementos de cualquier tipo de dato). Esto se demuestra en pruebas_insercion() en el archivo de pruebas.c
+ 
+Una aclaracion para evitar confusiones : en la prueba "dadounalistavacio_cuandoquieraeliminarelultimoelemento_noseeliminanada" lo que estoy tratando de probar es que al tratar de eliminar el ultimo elemento de una lista vacia (es decir inicializada en NULL), el programa no se rompe.
