@@ -1,0 +1,1 @@
+Implementacion de un hash abierto (direccionamiento cerrado) mediante el uso de un vector de punteros del tipo (par_t*) que a su vez tienen un puntero al elemento siguiente de esta forma se van encadenando los elementos y solucionando las colisiones.
